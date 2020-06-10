@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Comment</key>
+	<string>Created with Recipe Robot v1.1.2 (https://github.com/homebysix/recipe-robot)</string>
+	<key>Description</key>
+	<string>Downloads the latest version of Suitcase Fusion.</string>
+	<key>Identifier</key>
+	<string>com.github.socialstijn.download.SuitcaseFusion</string>
+	<key>Input</key>
+	<dict>
+		<key>DOWNLOAD_URL</key>
+		<string>https://www.extensis.com/cs/c/?cta_guid=346d57d1-bc8c-4e8d-b4d3-79cbac2cd0dc&amp;placement_guid=45df33f2-1a07-4eb0-a8a2-47384f236337&amp;portal_id=1740477&amp;canon=https%3A%2F%2Fwww.extensis.com%2Fgo-to-mac-download-teamsync&amp;redirect_url=APefjpGjuS_49pXubA3hWmLTfEM-J9pOynmCbM1a9Dlmr4I588XX1hVR8lXFkpEO5OEfUrmNA2svNHzv8l4g0j-stWvhXPwInkjnvNa6YSk8ErAxtdIKDRX08kWYVcvuyr26M_g7YH2mfBrXIOFYddg5Cl-JYDYvZuYF_J6BMqtKTmphKikghnQWSQLC0qou07pHXwuyZcaX60-ypVpnx2cFR7RTf16Gq2RCiNb_prZySE65a_LgoXeg2i_goyiwRPWkCBciJTnkqXgKzdPxZuTFIXTuXXAyUA&amp;click=c86abcb6-205c-4db4-a531-643517a16819&amp;hsutk=8eba833ef7e04338d51585e67ebe0549&amp;signature=AAH58kE0BOv72oh_KBzmDNtRYItISoPPAw&amp;utm_referrer=https%3A%2F%2Fwww.extensis.com%2Fselect-your-version-teamsync&amp;pageId=21707739962&amp;contentType=landing-page&amp;__hstc=8516202.8eba833ef7e04338d51585e67ebe0549.1591785221103.1591785221103.1591785221103.1&amp;__hssc=8516202.1.1591785221103&amp;__hsfp=3327974790</string>
+		<key>NAME</key>
+		<string>Suitcase Fusion</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>1.0.0</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>filename</key>
+				<string>%NAME%.dmg</string>
+				<key>url</key>
+				<string>%DOWNLOAD_URL%</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>input_path</key>
+				<string>%pathname%/Suitcase Fusion.app</string>
+				<key>requirement</key>
+				<string>identifier "com.extensis.SuitcaseFusion" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = J6MMHGD9D6</string>
+			</dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>input_plist_path</key>
+				<string>%pathname%/Suitcase Fusion.app/Contents/Info.plist</string>
+				<key>plist_version_key</key>
+				<string>CFBundleShortVersionString</string>
+			</dict>
+			<key>Processor</key>
+			<string>Versioner</string>
+		</dict>
+	</array>
+</dict>
+</plist>
